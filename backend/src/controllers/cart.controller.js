@@ -1,6 +1,6 @@
 import { pool } from "../config/db.js";
 
-// 🛒 Obtener carrito de un usuario
+// Obtener carrito
 export const getCart = async (req, res) => {
     try {
         const { user_id } = req.params;
@@ -11,7 +11,7 @@ export const getCart = async (req, res) => {
         );
 
         if (cart.length === 0) {
-            return res.json({ items: [], total: 0 });
+            return res.json({ count: 0, items: [], total: 0 });
         }
 
         const cartId = cart[0].id;
@@ -26,24 +26,47 @@ export const getCart = async (req, res) => {
         );
 
         const total = items.reduce(
-            (acc, item) => acc + Number(item.subtotal), 0);
+            (acc, item) => acc + Number(item.subtotal), 0
+        );
 
-        res.json({ items, total });
+        res.json({
+            count: items.length,
+            items,
+            total
+        });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Error al obtener carrito" });
     }
 };
 
 
 
-
-//Agregar al carrito
+// Agregar al carrito
 export const addToCart = async (req, res) => {
     try {
         const { user_id, product_id, quantity } = req.body;
 
-        // 1. Buscar o crear carrito
+        if (!user_id || !product_id || !quantity) {
+            return res.status(400).json({ message: "Datos incompletos" });
+        }
+
+        if (quantity <= 0) {
+            return res.status(400).json({ message: "Cantidad inválida" });
+        }
+
+        // 🔍 Validar producto
+        const [product] = await pool.query(
+            "SELECT * FROM products WHERE id = ?",
+            [product_id]
+        );
+
+        if (product.length === 0) {
+            return res.status(404).json({ message: "Producto no existe" });
+        }
+
+        // 🛒 Buscar o crear carrito
         let [cart] = await pool.query(
             "SELECT * FROM carts WHERE user_id = ?",
             [user_id]
@@ -61,7 +84,7 @@ export const addToCart = async (req, res) => {
             cartId = cart[0].id;
         }
 
-        // 2. Verificar si ya existe el producto
+        // Verificar si ya existe
         const [existing] = await pool.query(
             "SELECT * FROM cart_items WHERE cart_id = ? AND product_id = ?",
             [cartId, product_id]
@@ -82,24 +105,26 @@ export const addToCart = async (req, res) => {
         res.json({ message: "Producto agregado al carrito" });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Error al agregar al carrito" });
-        console.log(error)
     }
 };
 
 
 
-
-
-//Remover del carrito 
+// Eliminar item
 export const removeFromCart = async (req, res) => {
     try {
         const { item_id } = req.params;
 
-        await pool.query(
+        const [result] = await pool.query(
             "DELETE FROM cart_items WHERE id = ?",
             [item_id]
         );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Item no encontrado" });
+        }
 
         res.json({ message: "Producto eliminado del carrito" });
 
@@ -110,17 +135,28 @@ export const removeFromCart = async (req, res) => {
 
 
 
-
-//Actualizar el carrito
+// Actualizar por item_id
 export const updateQuantity = async (req, res) => {
     try {
         const { item_id } = req.params;
         const { quantity } = req.body;
 
-        await pool.query(
+        if (quantity <= 0) {
+            await pool.query(
+                "DELETE FROM cart_items WHERE id = ?",
+                [item_id]
+            );
+            return res.json({ message: "Producto eliminado (cantidad 0)" });
+        }
+
+        const [result] = await pool.query(
             "UPDATE cart_items SET quantity = ? WHERE id = ?",
             [quantity, item_id]
         );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Item no encontrado" });
+        }
 
         res.json({ message: "Cantidad actualizada" });
 
@@ -131,11 +167,15 @@ export const updateQuantity = async (req, res) => {
 
 
 
-//Actualizar pro producto
+// Actualizar por product_id (MEJOR PARA FRONTEND)
 export const updateQuantityByProduct = async (req, res) => {
     try {
         const { product_id } = req.params;
         const { quantity, user_id } = req.body;
+
+        if (!user_id || quantity === undefined) {
+            return res.status(400).json({ message: "Datos incompletos" });
+        }
 
         const [cart] = await pool.query(
             "SELECT * FROM carts WHERE user_id = ?",
@@ -148,6 +188,14 @@ export const updateQuantityByProduct = async (req, res) => {
 
         const cartId = cart[0].id;
 
+        if (quantity <= 0) {
+            await pool.query(
+                "DELETE FROM cart_items WHERE cart_id = ? AND product_id = ?",
+                [cartId, product_id]
+            );
+            return res.json({ message: "Producto eliminado" });
+        }
+
         const [result] = await pool.query(
             `UPDATE cart_items 
             SET quantity = ? 
@@ -155,9 +203,13 @@ export const updateQuantityByProduct = async (req, res) => {
             [quantity, cartId, product_id]
         );
 
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: "Producto no está en el carrito" });
+        }
+
         res.json({ message: "Cantidad actualizada por producto" });
 
     } catch (error) {
-        res.status(500).json({ message: "Error" });
+        res.status(500).json({ message: "Error al actualizar" });
     }
 };
