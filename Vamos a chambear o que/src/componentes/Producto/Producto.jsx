@@ -24,3 +24,23 @@ export default function Producto({imagePath, precio, nombreProducto}) {
     )
 
 }
+
+// Lo que dio chatgpt para conectar el carrito con el producto.
+
+/*  
+const Producto = ({ id, name, price, image }) => {
+    const { addItem } = useCart();
+
+    return (
+        <div>
+            <h3>{name}</h3>
+            <p>${price}</p>
+
+            <button onClick={() => addItem(id)}>
+                🛒 Agregar
+            </button>
+        </div>
+    );
+};
+
+*/
