@@ -10,18 +10,24 @@
 
 img{
 
-    height: 150px;
+    
+    max-height: 180px;
+    max-width: 250px;
+   object-fit: contain;
 }
 
 .divImagen{
     border: solid 2px #a3a3a3;
     padding: 5px;
+    
 }
 
 .productos{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    width: 50%;
+ 
 }
 
 
@@ -39,6 +45,8 @@ button:hover{
     background-color: #000000;
     
 }
+
+
 
 
 .btn-flip{
