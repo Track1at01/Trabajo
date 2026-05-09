@@ -1,0 +1,23 @@
+.divDescuento {
+    position: relative;
+}
+
+.divDescuento h2 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: red;
+    background: white;
+    padding: 5px;
+}
+
+.divDescuento img {
+    width: 200px;
+    height: 200px;
+}
+
+
+.ofertas{
+    display: flex;
+    gap: 20px;
+}

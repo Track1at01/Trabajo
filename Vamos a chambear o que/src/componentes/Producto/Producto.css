@@ -1,8 +1,15 @@
 .principal{
     background-color: rgba(0, 0, 0, 0.342);
     width: 150px;
+    height: 200px;
 }
 
 img{
     height: 150px;
+}
+
+.productos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }

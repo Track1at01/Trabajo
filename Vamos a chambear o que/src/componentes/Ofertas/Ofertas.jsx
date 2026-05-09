@@ -1,12 +1,15 @@
-export default function Oferta(imagePath, descuento, nombreProducto){
-    return(
-<div>
-<div className="divDescuento">
-<h2></h2>
-</div>
+import './Ofertas.css'
 
-    <h2>nombreProducto</h2>
-</div>
+export default function Oferta({ imagePath, descuento, nombreProducto }) {
+    return (
+        <div>
+            <div className="divDescuento">
+                <h2>{descuento}</h2>
+                <img src={imagePath} alt="" />
+            </div>
+
+            <h2>{nombreProducto}</h2>
+        </div>
 
     )
 }
