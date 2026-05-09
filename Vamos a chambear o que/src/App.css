@@ -28,7 +28,11 @@ main{
 
 .grano{
     margin: 30px;
+text-align: center;
+}
 
+.grano h2{
+    color: rgb(255, 0, 0);
 }
 
 

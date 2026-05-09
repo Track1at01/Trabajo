@@ -3,23 +3,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-   
-
+    width: 220px;
 }
 
-img{
-
-    
-    max-height: 180px;
-    max-width: 250px;
-   object-fit: contain;
+.principal img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
 }
 
 .divImagen{
     border: solid 2px #a3a3a3;
     padding: 5px;
-    
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
 }
 
 .productos{

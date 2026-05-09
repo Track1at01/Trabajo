@@ -23,7 +23,7 @@ function App() {
         </div>
 
 <div className='grano'>
-<p>si llevas 3 te regalan <h2>SEXO GRATIS</h2> en el local de al lado</p>
+<p>si llevas 3 te ofrecen <h2>SEXO GRATIS</h2> en el local de al lado</p>
 
 </div>
 
