@@ -8,7 +8,7 @@ import { OFERTA } from './Datos-ofertas'
 function App() {
 
   return (
-    <>
+    <main>
     <div className='ofertas'>
 
       <Oferta
@@ -22,7 +22,10 @@ function App() {
         />
         </div>
 
+<div className='grano'>
+<p>si llevas 3 te regalan <h2>SEXO GRATIS</h2> en el local de al lado</p>
 
+</div>
 
 
 <div className='productos'>
@@ -55,7 +58,7 @@ function App() {
         {...PRODUCTOS[8]}
         />
         </div>
-    </>
+    </main>
   )
 }
 

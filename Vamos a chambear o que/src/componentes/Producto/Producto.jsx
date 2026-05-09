@@ -1,17 +1,21 @@
 
 import "./Producto.css"
 
-export default function Producto({imagePath, nombreProducto}) {
+export default function Producto({imagePath, precio, nombreProducto}) {
     return (
 
         <div className="principal">
 
-            <div>
+            <div className="divImagen">
                 <img src={imagePath} alt="..." />
             </div>
 
-            <button>Agregar al carrito</button>
+            <a href="#" class="btn-flip" data-back="Agregar" data-front={precio}></a>
+
+            <div className="raya">
             <h3>{nombreProducto}</h3>
+
+            </div>
 
            
 
