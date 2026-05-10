@@ -1,0 +1,50 @@
+  .carousel {
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 700px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .card {
+    width: 300px;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: xx-large;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    flex-shrink: 0;
+
+    &:nth-child(1) {
+      background: #ffffff00;
+    }
+
+    &:nth-child(2) {
+      background: #5d34f200;
+    }
+
+    &:nth-child(3) {
+      background: #4100da00;
+    }
+  }
+
+   .group {
+   
+    will-change: transform; 
+    animation: scrolling 12s linear infinite;
+    display: flex;
+    gap: 20px;
+    width: max-content;
+  }
+
+  @keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+

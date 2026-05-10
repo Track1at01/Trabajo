@@ -6,13 +6,7 @@
 }
 
 
-body{
-    height: 100vh;
-    display: flex;
-background-color: aquamarine;
-width: 100%;
 
-}
 
 
 main{
@@ -20,10 +14,10 @@ main{
    height: 100vh;
    justify-content: center;
    align-items: center;
-   flex-wrap: wrap;
-    background-color: rgb(255, 255, 255);
-    flex-direction: column;
-    width: 100vw;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   background-color: rgb(255, 255, 255);
+   width: 100vw;
 }
 
 .grano{
@@ -41,7 +35,7 @@ body{
 	height: 100vh;
 	display: flex;
 	position: relative;
-	background: #1e1e24;
+	background: #ffffff;
 	align-items: center;
 	justify-content: center;
 }

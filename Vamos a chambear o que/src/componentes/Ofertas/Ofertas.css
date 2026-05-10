@@ -21,3 +21,11 @@
     display: flex;
     gap: 20px;
 }
+
+.card:hover{
+transform: scale(1.1);
+}
+
+.card{
+    transition: all 0.5s;
+}
