@@ -16,7 +16,7 @@ export const OFERTA = [
 },
 {
     imagePath: bici3,
-    descuento: "-100%",
+    descuento: "-88%",
     nombreProducto: "bicicleta 2"
 },
 ]

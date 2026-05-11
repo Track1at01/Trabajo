@@ -1,13 +1,16 @@
   .carousel {
     margin: 0 auto;
     padding: 20px 0;
-    max-width: 700px;
+    max-width: 100%;
     overflow: hidden;
     display: flex;
+    background-color: rgb(48, 48, 48);
+    
   }
 
   .card {
-    width: 300px;
+    margin: 20px;
+    border-radius: 20px;
     color: white;
     border-radius: 10px;
     padding: 5px;
@@ -33,7 +36,7 @@
    .group {
    
     will-change: transform; 
-    animation: scrolling 12s linear infinite;
+    animation: scrolling 20s linear infinite;
     display: flex;
     gap: 20px;
     width: max-content;

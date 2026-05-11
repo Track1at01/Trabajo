@@ -5,15 +5,39 @@ import { PRODUCTOS } from './Datos-productos'
 import Oferta from './componentes/Ofertas/Ofertas'
 import { OFERTA } from './Datos-ofertas'
 import "./componentes/Ofertas/OfertasCarrucel.css"
-
+import Header from "./componentes/Header/Header"
 
 function App() {
 
   return (
+
+
     <main>
+     
+        <Header />
+
+
       <div className='ofertas'>
         <div className='carousel basic'>
           <div className='group'>
+            <Oferta
+              {...OFERTA[0]}
+            />
+            <Oferta
+              {...OFERTA[1]}
+            />
+            <Oferta
+              {...OFERTA[2]}
+            />
+            <Oferta
+              {...OFERTA[0]}
+            />
+            <Oferta
+              {...OFERTA[1]}
+            />
+            <Oferta
+              {...OFERTA[2]}
+            />
             <Oferta
               {...OFERTA[0]}
             />

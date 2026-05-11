@@ -5,15 +5,19 @@
 .divDescuento h2 {
     position: absolute;
     top: 10px;
-    left: 10px;
-    color: red;
-    background: white;
+    left: 50%;
     padding: 5px;
+    color: rgba(0, 0, 0, 0.541);
+    background: rgba(255, 190, 68, 0.5);
+    font-size: larger;
+    border-radius: 100px;
 }
 
 .divDescuento img {
     width: 200px;
     height: 200px;
+    border: solid 1px #222;
+    border-radius: 20px;
 }
 
 
@@ -24,8 +28,12 @@
 
 .card:hover{
 transform: scale(1.1);
+box-shadow:  0 0 5px 5px #ffffff4b ;
+border-radius: 25px;
+background-color: rgba(255, 255, 255, 0.185);
 }
 
 .card{
     transition: all 0.5s;
+  text-align: center;
 }

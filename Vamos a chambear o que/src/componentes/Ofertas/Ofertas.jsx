@@ -8,7 +8,7 @@ export default function Oferta({ imagePath, descuento, nombreProducto }) {
                 <img src={imagePath} alt="" />
             </div>
 
-            <h2>{nombreProducto}</h2>
+            <h6>{nombreProducto}</h6>
         </div>
 
     )
