@@ -1,33 +1,62 @@
 import { useState } from 'react'
 import './App.css'
 import Producto from './componentes/Producto/Producto'
-import { PRODUCTOS } from './Datos-productos'
+import { PRODUCTOS } from './Datos/Datos-productos'
+import { CASCOS } from './Datos/Datos-cascos'
 import Oferta from './componentes/Ofertas/Ofertas'
-import { OFERTA } from './Datos-ofertas'
+import { OFERTA } from './Datos/Datos-ofertas'
 import "./componentes/Ofertas/OfertasCarrucel.css"
 import Header from "./componentes/Header/Header"
 
 function App() {
-  const [productIndex, setProductIndex] = useState(0)
+  const productsPerView = 6
+  const [groupIndex, setGroupIndex] = useState(0)
   const productCount = PRODUCTOS.length
-  const currentProduct = PRODUCTOS[productIndex]
+  const totalGroups = Math.ceil(productCount / productsPerView)
+  const visibleProducts = PRODUCTOS.slice(
+    groupIndex * productsPerView,
+    (groupIndex + 1) * productsPerView
+  )
 
-  const handlePrevProduct = () => {
-    setProductIndex((index) => (index === 0 ? productCount - 1 : index - 1))
+  const handlePrevGroup = () => {
+    setGroupIndex((index) => (index === 0 ? totalGroups - 1 : index - 1))
   }
 
-  const handleNextProduct = () => {
-    setProductIndex((index) => (index === productCount - 1 ? 0 : index + 1))
+  const handleNextGroup = () => {
+    setGroupIndex((index) => (index === totalGroups - 1 ? 0 : index + 1))
   }
 
-  const handleSelectProduct = (index) => {
-    setProductIndex(index)
+  const handleSelectGroup = (index) => {
+    setGroupIndex(index)
+  }
+
+  const cascosPerView = 5
+  const [cascoGroupIndex, setCascoGroupIndex] = useState(0)
+  const cascoCount = CASCOS.length
+  const totalCascoGroups = Math.ceil(cascoCount / cascosPerView)
+  const visibleCascos = CASCOS.slice(
+    cascoGroupIndex * cascosPerView,
+    (cascoGroupIndex + 1) * cascosPerView
+  )
+
+  const handlePrevCascos = () => {
+    setCascoGroupIndex((index) => (index === 0 ? totalCascoGroups - 1 : index - 1))
+  }
+
+  const handleNextCascos = () => {
+    setCascoGroupIndex((index) => (index === totalCascoGroups - 1 ? 0 : index + 1))
+  }
+
+  const handleSelectCascos = (index) => {
+    setCascoGroupIndex(index)
   }
 
   return (
 
 
+
     <main>
+     
         <Header />
 
 
@@ -51,41 +80,91 @@ function App() {
 
 
       <div className='productos-carousel-section'>
-        <h2>Productos</h2>
+        <h2>¿Qué mejor manera de moverse?</h2>
         <div className='productos-carousel'>
+          
           <button
             type='button'
             className='carousel-button prev'
-            onClick={handlePrevProduct}
+            onClick={handlePrevGroup}
           >
             ‹
           </button>
 
-          <div className='producto-display'>
-            <Producto {...currentProduct} />
+          <div className='productos-display'>
+            {visibleProducts.map((producto, index) => (
+              <Producto
+                key={groupIndex * productsPerView + index}
+                {...producto}
+              />
+            ))}
           </div>
 
           <button
             type='button'
             className='carousel-button next'
-            onClick={handleNextProduct}
+            onClick={handleNextGroup}
           >
             ›
           </button>
         </div>
 
         <div className='carousel-dots'>
-          {PRODUCTOS.map((_, index) => (
+          {Array.from({ length: totalGroups }, (_, index) => (
             <button
               key={index}
               type='button'
-              className={`carousel-dot ${index === productIndex ? 'active' : ''}`}
-              onClick={() => handleSelectProduct(index)}
-              aria-label={`Mostrar producto ${index + 1}`}
+              className={`carousel-dot ${index === groupIndex ? 'active' : ''}`}
+              onClick={() => handleSelectGroup(index)}
+              aria-label={`Mostrar grupo ${index + 1}`}
             />
           ))}
         </div>
       </div>
+
+<div className='productos-carousel-section'>
+        <h2>¿Casco? Traiganle una falda a la niña</h2>
+        <div className='productos-carousel'>
+          
+          <button
+            type='button'
+            className='carousel-button prev'
+            onClick={handlePrevCascos}
+          >
+            ‹
+          </button>
+
+          <div className='productos-display'>
+            {visibleCascos.map((casco, index) => (
+              <Producto
+                key={cascoGroupIndex * cascosPerView + index}
+                {...casco}
+              />
+            ))}
+          </div>
+
+          <button
+            type='button'
+            className='carousel-button next'
+            onClick={handleNextCascos}
+          >
+            ›
+          </button>
+        </div>
+
+        <div className='carousel-dots'>
+          {Array.from({ length: totalCascoGroups }, (_, index) => (
+            <button
+              key={index}
+              type='button'
+              className={`carousel-dot ${index === cascoGroupIndex ? 'active' : ''}`}
+              onClick={() => handleSelectCascos(index)}
+              aria-label={`Mostrar grupo ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
     </main>
   )
 }

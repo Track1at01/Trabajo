@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { addToCart, getCart } from "./cartService";
+
 
 const CartContext = createContext();
 
@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
 
     const addItem = async (product_id) => {
         await addToCart(product_id);
-        loadCart(); // 🔥 refresca carrito
+        loadCart(); 
     };
 
     useEffect(() => {

@@ -5,19 +5,16 @@
     
 }
 
-
-
-
-
 main{
    display: flex;
-   height: 150vh;
+   min-height: 100vh;
    justify-content: center;
-   align-items: center;
    flex-direction: column;
    flex-wrap: nowrap;
    background-color: rgb(255, 255, 255);
    width: 100vw;
+   align-items: flex-start;
+   align-items: center;
 }
 
 .grano{
@@ -32,21 +29,19 @@ text-align: center;
 
 body{
 	width: 100vw;
-	height: 100vh;
-	display: flex;
+	display: block;
 	position: relative;
 	background: #ffffff;
-	align-items: center;
-	justify-content: center;
+    
 }
 
 .productos-carousel-section {
-  width: min(100%, 940px);
+  width: min(100%, 100%);
   margin: 40px auto;
   padding: 22px;
-  background: #f7f7f7;
+  background: #ffffff;
   border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
 }
 
 .productos-carousel-section h2 {
@@ -64,9 +59,12 @@ body{
   flex-wrap: wrap;
 }
 
-.producto-display {
-  width: 240px;
-  min-width: 240px;
+.productos-display {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .carousel-button {

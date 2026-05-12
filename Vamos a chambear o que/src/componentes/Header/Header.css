@@ -3,13 +3,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
-    height: 80px;
-    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    width: 100%;
+    height: auto;
+    min-height: 80px;
     padding: 0 30px;
     box-sizing: border-box;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-bottom: 3px solid #313131;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    flex-shrink: 0;
 }
 
 .Logo {
