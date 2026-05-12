@@ -40,6 +40,76 @@ body{
 	justify-content: center;
 }
 
+.productos-carousel-section {
+  width: min(100%, 940px);
+  margin: 40px auto;
+  padding: 22px;
+  background: #f7f7f7;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.productos-carousel-section h2 {
+  margin-bottom: 18px;
+  font-size: 24px;
+  text-align: center;
+  color: #222;
+}
+
+.productos-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.producto-display {
+  width: 240px;
+  min-width: 240px;
+}
+
+.carousel-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #fff;
+  color: #333;
+  font-size: 28px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.carousel-button:hover {
+  transform: scale(1.06);
+  background: #efefef;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #ddd;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.carousel-dot.active {
+  background: #333;
+}
+
 
 
 

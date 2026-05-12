@@ -10,7 +10,7 @@ export default function Producto({imagePath, precio, nombreProducto}) {
                 <img src={imagePath} alt="..." />
             </div>
 
-            <a href="#" class="btn-flip" data-back="Agregar" data-front={precio}></a>
+            <a href="#" className="btn-flip" data-back="Agregar" data-front={precio}></a>
 
             <div className="raya">
             <h3>{nombreProducto}</h3>
