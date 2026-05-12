@@ -20,42 +20,12 @@ function App() {
       <div className='ofertas'>
         <div className='carousel basic'>
           <div className='group'>
-            <Oferta
-              {...OFERTA[0]}
-            />
-            <Oferta
-              {...OFERTA[1]}
-            />
-            <Oferta
-              {...OFERTA[2]}
-            />
-            <Oferta
-              {...OFERTA[0]}
-            />
-            <Oferta
-              {...OFERTA[1]}
-            />
-            <Oferta
-              {...OFERTA[2]}
-            />
-            <Oferta
-              {...OFERTA[0]}
-            />
-            <Oferta
-              {...OFERTA[1]}
-            />
-            <Oferta
-              {...OFERTA[2]}
-            />
-            <Oferta
-              {...OFERTA[0]}
-            />
-            <Oferta
-              {...OFERTA[1]}
-            />
-            <Oferta
-              {...OFERTA[2]}
-            />
+            {OFERTA.map((oferta, index) => (
+          <Oferta
+            key={index}
+            {...oferta}
+          />
+        ))}
           </div>
         </div>
       </div>
